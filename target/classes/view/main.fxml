@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.presentation.controller.MainController"
+            style="-fx-font-family: 'Segoe UI'; -fx-padding: 10;">
+
+    <!-- ====== PHẦN TIÊU ĐỀ ====== -->
+    <top>
+        <Label text="Quản lý Hóa Đơn" 
+               style="-fx-font-size:20; -fx-font-weight:bold;" 
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <!-- ====== PHẦN NHẬP DỮ LIỆU (BÊN TRÁI) ====== -->
+    <left>
+        <VBox spacing="12" BorderPane.alignment="CENTER_LEFT" prefWidth="360">
+            <!-- Hóa đơn Việt Nam -->
+            <TitledPane text="Tạo Hóa Đơn Việt Nam" expanded="true">
+                <content>
+                    <GridPane hgap="8" vgap="8">
+                        <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+
+                        <Label text="Tên KH:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtNameVN" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Tổng tiền:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtTienVN" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Ngày lập:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="dateVN" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Định mức (hệ số):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtHeSoVN" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Button text="Tạo VN" onAction="#onCreateVN" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </content>
+            </TitledPane>
+
+            <!-- Hóa đơn Nước Ngoài -->
+            <TitledPane text="Tạo Hóa Đơn Nước Ngoài" expanded="true">
+                <content>
+                    <GridPane hgap="8" vgap="8">
+                        <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+
+                        <Label text="Tên KH:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtNameNN" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Tổng tiền:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtTienNN" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Ngày lập:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="dateNN" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Thuế (ví dụ 0.1 = 10%):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtThueNN" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Button text="Tạo NN" onAction="#onCreateNN" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </content>
+            </TitledPane>
+        </VBox>
+    </left>
+
+    <!-- ====== PHẦN DANH SÁCH (TRUNG TÂM) ====== -->
+    <center>
+        <VBox spacing="10">
+            <!-- Thanh công cụ trên cùng -->
+            <HBox spacing="8">
+                <Button text="Làm mới" onAction="#onRefresh"/>
+                <ChoiceBox fx:id="choiceFilter" prefWidth="120"/>
+                <TextField fx:id="txtSearch" promptText="Tìm kiếm..." prefWidth="150"/>
+                <Button text="Tìm" onAction="#onSearch"/>
+                <Button text="Xóa" onAction="#onDelete"/>
+                <Button text="Sửa" onAction="#onEdit"/>
+                <TextField fx:id="txtMonth" promptText="Tháng (1-12)" prefWidth="80"/>
+                <Button text="Lọc tháng" onAction="#onFilterByMonth"/>
+                <Button text="Thống kê" onAction="#onStats"/>
+                <Region HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Bảng hóa đơn -->
+            <TableView fx:id="tableInvoices" prefHeight="420">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="180"/>
+                    <TableColumn fx:id="colName" text="Khách hàng" prefWidth="140"/>
+                    <TableColumn fx:id="colDate" text="Ngày" prefWidth="120"/>
+                    <TableColumn fx:id="colTotal" text="Tổng tiền" prefWidth="120"/>
+                    <TableColumn fx:id="colType" text="Loại" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+            <!-- Chi tiết hóa đơn hoặc thông báo -->
+            <TextArea fx:id="txtDetail" editable="false" prefRowCount="5" wrapText="true"/>
+        </VBox>
+    </center>
+
+    <!-- Padding ngoài cùng -->
+    <padding>
+        <Insets top="8" right="8" bottom="8" left="8"/>
+    </padding>
+</BorderPane>
