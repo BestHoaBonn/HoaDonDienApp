@@ -18,7 +18,6 @@ import java.util.UUID;
 
 public class MainController {
 
-    // region UI Components
     @FXML
     private TextField txtNameVN;
     @FXML

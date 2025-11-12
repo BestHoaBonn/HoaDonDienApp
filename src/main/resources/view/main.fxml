@@ -7,17 +7,16 @@
             fx:controller="com.presentation.controller.MainController"
             style="-fx-font-family: 'Segoe UI'; -fx-padding: 10;">
 
-    <!-- ====== PHẦN TIÊU ĐỀ ====== -->
+    <!--  PHẦN TIÊU ĐỀ  -->
     <top>
         <Label text="Quản lý Hóa Đơn" 
                style="-fx-font-size:20; -fx-font-weight:bold;" 
                BorderPane.alignment="CENTER"/>
     </top>
 
-    <!-- ====== PHẦN NHẬP DỮ LIỆU (BÊN TRÁI) ====== -->
+    <!--  PHẦN NHẬP DỮ LIỆU (BÊN TRÁI)  -->
     <left>
         <VBox spacing="12" BorderPane.alignment="CENTER_LEFT" prefWidth="360">
-            <!-- Hóa đơn Việt Nam -->
             <TitledPane text="Tạo Hóa Đơn Việt Nam" expanded="true">
                 <content>
                     <GridPane hgap="8" vgap="8">
@@ -65,7 +64,7 @@
         </VBox>
     </left>
 
-    <!-- ====== PHẦN DANH SÁCH (TRUNG TÂM) ====== -->
+    <!--  PHẦN DANH SÁCH (TRUNG TÂM)  -->
     <center>
         <VBox spacing="10">
             <!-- Thanh công cụ trên cùng -->
@@ -97,8 +96,6 @@
             <TextArea fx:id="txtDetail" editable="false" prefRowCount="5" wrapText="true"/>
         </VBox>
     </center>
-
-    <!-- Padding ngoài cùng -->
     <padding>
         <Insets top="8" right="8" bottom="8" left="8"/>
     </padding>
